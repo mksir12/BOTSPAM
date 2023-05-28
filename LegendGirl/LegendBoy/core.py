@@ -19,7 +19,7 @@ else:
     PING_PIC = "https://graph.org/file/8b665536aee97ee58f5ca.jpg"
 
 
-@Client.on_message(filters.user(sudos) & filters.command(["ping"], prefixes=HANDLER))
+@Client.on_message(filters.user(ADMIN) & filters.command(["ping"], prefixes=HANDLER))
 async def ping(_, e: Message):
     start = datetime.datetime.now()
     uptime = get_time((time.time() - start_time))
@@ -40,7 +40,7 @@ async def ping(_, e: Message):
 
 
 @Client.on_message(
-    filters.user(sudos) & filters.command(["restart", "reboot"], prefixes=HANDLER)
+    filters.user(ADMIN) & filters.command(["restart", "reboot"], prefixes=HANDLER)
 )
 async def restarter(Legend: Client, message: Message):
     await message.reply_text(
